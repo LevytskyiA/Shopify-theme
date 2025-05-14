@@ -67,19 +67,9 @@
     >
       <div class="row px-[30px] mb-[60px] xl:px-0">
         <div class="flex gap-3 justify-center border-b-2 border-solid border-grey">
-          {% liquid
-            assign groups = '' | split: ','
-            for block in section.blocks
-              assign group = block.settings.product_group | downcase
-              unless groups contains group
-                assign groups = groups | push: group
-              endunless
-            endfor
-          %}
           <template
             x-for="group in groups"
             :key="group"
-            x-if="products.length > 1"
           >
             <button
               type="button"
